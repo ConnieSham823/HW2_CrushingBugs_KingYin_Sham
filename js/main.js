@@ -5,9 +5,9 @@ const theButtons = document.querySelectorAll("#buttonHolder img");
 const puzzleBoard = document.querySelector(".puzzle-board");
 const puzzlePiecesDivs = document.querySelectorAll(".puzzle-pieces");
 const dropZones = document.querySelectorAll(".drop-zone");
-const resetButton = document.getElementById("resetBut")
+const resetButton = document.getElementById("resetBut");
 let draggedPiece;
-let currentPuzzle = o;
+let currentPuzzle = 0;
 
 // functions
 function changeBGImage(event) {
@@ -15,6 +15,14 @@ function changeBGImage(event) {
     const puzzleId = event.currentTarget.id;
 
     resetPuzzlePieces();
+
+    // Puzzle pieces display:none
+    puzzlePiecesDivs.forEach(div => {
+        div.style.display = "none";
+    });
+
+    // Change background show the corresponding puzzle pieces
+    document.querySelector(`#puzzle${puzzleId}`).style.display = "block";
     
     // background image change
     puzzleBoard.style.backgroundImage = `url('./images/backGround${puzzleId}.jpg')`;
@@ -29,7 +37,7 @@ function handleStartDrag() {
 
 function handleOver(e) {
     e.preventDefault();
-    console.log("Dragged Over")
+    console.log("Dragged Over");
 }
 
 function handleDrop(e) {
@@ -41,7 +49,7 @@ function handleDrop(e) {
         console.log("Drop zone already occupied");
         return;
     }
-    
+
     this.appendChild(draggedPiece);
 }
 
