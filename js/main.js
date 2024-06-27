@@ -44,7 +44,7 @@ function handleDrop(e) {
     e.preventDefault();
     console.log("Dropped");
 
-    // if the dropzone already occupied, don't allow another piece drop.
+    // if the drop zone already occupied, don't allow another piece to drop.
     if (this.children.length > 0) {
         console.log("Drop zone already occupied");
         return;
@@ -73,8 +73,8 @@ puzzlePiecesDivs.forEach(puzzleDiv => {
 });
 
 dropZones.forEach(zone => {
-    zone.addEventListener("dragover",handleOver);
+    zone.addEventListener("dragover", handleOver);
     zone.addEventListener("drop", handleDrop);
-})
+});
 
 resetButton.addEventListener("click", resetPuzzlePieces);
