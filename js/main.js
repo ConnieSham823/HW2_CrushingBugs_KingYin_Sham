@@ -10,6 +10,7 @@ let draggedPiece;
 let currentPuzzle = 0;
 
 // functions
+    // Puzzle background change and resetPuzzlePieces
 function changeBGImage(event) {
     console.log("changeBGImage called");
     const puzzleId = event.currentTarget.id;
@@ -67,6 +68,12 @@ function resetPuzzlePieces() {
 // eventListeners
 theButtons.forEach(button => button.addEventListener("click", changeBGImage));
 
+theButtons.forEach(function(img) {
+    img.addEventListener("dragstart", function(event) {
+        event.preventDefault();
+        });
+    });
+
 puzzlePiecesDivs.forEach(puzzleDiv => {
     const pieces = puzzleDiv.querySelectorAll("img");
     pieces.forEach(piece => piece.addEventListener("dragstart", handleStartDrag));
@@ -78,3 +85,4 @@ dropZones.forEach(zone => {
 });
 
 resetButton.addEventListener("click", resetPuzzlePieces);
+
